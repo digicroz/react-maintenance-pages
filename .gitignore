@@ -1,0 +1,51 @@
+# ======================================
+# Node & Dependency Files
+# ======================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ======================================
+# Build Output
+# ======================================
+dist/
+build/
+coverage/
+
+# ======================================
+# IDE & Editor Files
+# ======================================
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# ======================================
+# Environment & Credentials
+# ======================================
+.env
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# ======================================
+# Test & Temp
+# ======================================
+*.log
+.tmp/
+.cache/
+example/
+*.tsbuildinfo
+
+# ======================================
+# Misc
+# ======================================
+# TypeScript incremental build files
+tsconfig.tsbuildinfo
+
+# Mac/Windows system files
+Thumbs.db

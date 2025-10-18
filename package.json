@@ -1,0 +1,25 @@
+{
+    "name": "@digicroz/react-maintenance-pages",
+    "version": "0.1.0",
+    "description": "Reusable and type-safe React maintenance and system pages by DigiCroz.",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch",
+        "lint": "eslint src --ext .ts,.tsx"
+    },
+    "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+    },
+    "author": "DigiCroz",
+    "license": "MIT",
+    "dependencies": {
+        "typescript": "^5.9.3"
+    }
+}
