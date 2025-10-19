@@ -80,7 +80,7 @@ const MaintenanceOverlay: React.FC<MaintenanceOverlayProps> = ({
 }) => {
     const {
         title = "Site Under Maintenance",
-        subtitle = "Please visit us on mobile or try again later.",
+        subtitle = "Please visit us later.",
         showSpinner = true,
         showThankYou = true,
         desktopOnly = false,
@@ -103,6 +103,9 @@ const MaintenanceOverlay: React.FC<MaintenanceOverlayProps> = ({
             stroke="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
+            style={{
+                animation: 'maintenance-intermittent-spin 8s ease-in-out infinite'
+            }}
         >
             <path
                 strokeLinecap="round"
@@ -130,6 +133,34 @@ const MaintenanceOverlay: React.FC<MaintenanceOverlayProps> = ({
             };
         }
     }, [config.enabled]);
+
+    // Inject keyframe animation into document head
+    React.useEffect(() => {
+        // Check if style already exists
+        const existingStyle = document.getElementById('maintenance-spinner-animation');
+        if (existingStyle) return;
+
+        const style = document.createElement('style');
+        style.id = 'maintenance-spinner-animation';
+        style.innerHTML = `
+            @keyframes maintenance-intermittent-spin {
+                0%, 37.5% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        return () => {
+            const styleToRemove = document.getElementById('maintenance-spinner-animation');
+            if (styleToRemove) {
+                document.head.removeChild(styleToRemove);
+            }
+        };
+    }, []);
 
     return (
         <div
@@ -175,7 +206,7 @@ const MaintenanceOverlay: React.FC<MaintenanceOverlayProps> = ({
 
                 {showSpinner && (
                     <div className="flex justify-center space-x-4 my-6 sm:my-8">
-                        <div className="animate-spin rounded-full h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 lg:h-10 lg:w-10 border-b-2 border-yellow-400 border-t-2 border-t-pink-500"></div>
+                        <div className="rounded-full h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 lg:h-10 lg:w-10 border-b-2 border-yellow-400 border-t-2 border-t-pink-500 animate-spin"></div>
                     </div>
                 )}
 
