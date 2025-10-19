@@ -73,11 +73,11 @@ export interface MaintenanceOverlayProps {
  * />
  * ```
  */
-function MaintenanceOverlay({
+const MaintenanceOverlay: React.FC<MaintenanceOverlayProps> = ({
     config,
     companyData,
     customization = {},
-}: MaintenanceOverlayProps): React.ReactElement | null {
+}) => {
     const {
         title = "Site Under Maintenance",
         subtitle = "Please visit us on mobile or try again later.",
@@ -188,6 +188,6 @@ function MaintenanceOverlay({
             </div>
         </div>
     );
-}
+};
 
 export default MaintenanceOverlay;
