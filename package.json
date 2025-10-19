@@ -1,6 +1,6 @@
 {
     "name": "@digicroz/react-maintenance-pages",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Reusable and type-safe React maintenance and system pages by DigiCroz.",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
@@ -11,7 +11,11 @@
     "scripts": {
         "build": "tsup",
         "dev": "tsup --watch",
-        "lint": "eslint src --ext .ts,.tsx"
+        "lint": "eslint src --ext .ts,.tsx",
+        "clean": "npx rimraf dist",
+        "prepublishOnly": "npm run clean && npm run build",
+        "release:patch": "npm version patch",
+        "postversion": "git push && git push --tags && npm publish"
     },
     "peerDependencies": {
         "react": ">=18",
