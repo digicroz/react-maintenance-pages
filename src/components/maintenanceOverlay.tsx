@@ -94,8 +94,8 @@ export const MaintenanceOverlay: React.FC<MaintenanceOverlayProps> = ({
         return null;
     }
 
-    const containerClasses = `maintenance-overlay fixed inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 z-[9999] ${desktopOnly ? 'hidden md:flex' : 'flex'
-        } items-center justify-center ${className}`;
+    const containerClasses = `maintenance-overlay rmp-fixed rmp-inset-0 rmp-bg-gradient-to-br rmp-from-purple-900 rmp-via-blue-900 rmp-to-indigo-900 rmp-z-[9999] ${desktopOnly ? 'rmp-hidden md:rmp-flex' : 'rmp-flex'
+        } rmp-items-center rmp-justify-center ${className}`;
 
     // Determine which icon to show
     const displayIcon = brandIcon || (
@@ -103,14 +103,14 @@ export const MaintenanceOverlay: React.FC<MaintenanceOverlayProps> = ({
             <img
                 src={brandLogoUrl}
                 alt={`${brandName} logo`}
-                className="mx-auto h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 mb-4 sm:mb-5 md:mb-6 object-contain drop-shadow-lg"
+                className="rmp-mx-auto rmp-h-12 rmp-w-12 sm:rmp-h-14 sm:rmp-w-14 md:rmp-h-16 md:rmp-w-16 lg:rmp-h-20 lg:rmp-w-20 rmp-mb-4 sm:rmp-mb-5 md:rmp-mb-6 rmp-object-contain rmp-drop-shadow-lg"
                 style={{
                     animation: 'maintenance-intermittent-spin 8s ease-in-out infinite'
                 }}
             />
         ) : (
             <svg
-                className="mx-auto h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 text-yellow-400 mb-4 sm:mb-5 md:mb-6 drop-shadow-lg"
+                className="rmp-mx-auto rmp-h-12 rmp-w-12 sm:rmp-h-14 sm:rmp-w-14 md:rmp-h-16 md:rmp-w-16 lg:rmp-h-20 lg:rmp-w-20 rmp-text-yellow-400 rmp-mb-4 sm:rmp-mb-5 md:rmp-mb-6 rmp-drop-shadow-lg"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -147,33 +147,7 @@ export const MaintenanceOverlay: React.FC<MaintenanceOverlayProps> = ({
         }
     }, [enabled]);
 
-    // Inject keyframe animation into document head
-    React.useEffect(() => {
-        // Check if style already exists
-        const existingStyle = document.getElementById('maintenance-spinner-animation');
-        if (existingStyle) return;
-
-        const style = document.createElement('style');
-        style.id = 'maintenance-spinner-animation';
-        style.innerHTML = `
-            @keyframes maintenance-intermittent-spin {
-                0%, 37.5% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        return () => {
-            const styleToRemove = document.getElementById('maintenance-spinner-animation');
-            if (styleToRemove) {
-                document.head.removeChild(styleToRemove);
-            }
-        };
-    }, []);
+    // Animation is now handled by CSS file, no need to inject
 
     return (
         <div
@@ -193,40 +167,40 @@ export const MaintenanceOverlay: React.FC<MaintenanceOverlayProps> = ({
                 opacity: 1
             }}
         >
-            <div className="text-center text-white px-4 sm:px-6 md:px-8 lg:px-10 max-w-7xl mx-auto w-full">
-                <div className="mb-4 sm:mb-6 md:mb-8">
+            <div className="rmp-text-center rmp-text-white rmp-px-4 sm:rmp-px-6 md:rmp-px-8 lg:rmp-px-10 rmp-max-w-7xl rmp-mx-auto rmp-w-full">
+                <div className="rmp-mb-4 sm:rmp-mb-6 md:rmp-mb-8">
                     {displayIcon}
                 </div>
 
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-5 md:mb-6 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 bg-clip-text text-transparent drop-shadow-2xl px-2">
+                <h1 className="rmp-text-3xl sm:rmp-text-4xl md:rmp-text-5xl lg:rmp-text-6xl xl:rmp-text-7xl rmp-font-bold rmp-mb-4 sm:rmp-mb-5 md:rmp-mb-6 rmp-bg-gradient-to-r rmp-from-yellow-400 rmp-via-pink-500 rmp-to-purple-500 rmp-bg-clip-text rmp-text-transparent rmp-drop-shadow-2xl rmp-px-2">
                     {title}
                 </h1>
 
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-7 md:mb-8 text-cyan-300 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl mx-auto font-semibold drop-shadow-md px-2">
+                <p className="rmp-text-base sm:rmp-text-lg md:rmp-text-xl lg:rmp-text-2xl rmp-mb-6 sm:rmp-mb-7 md:rmp-mb-8 rmp-text-cyan-300 rmp-max-w-xs sm:rmp-max-w-md md:rmp-max-w-lg lg:rmp-max-w-2xl xl:rmp-max-w-3xl rmp-mx-auto rmp-font-semibold rmp-drop-shadow-md rmp-px-2">
                     {message}
                 </p>
 
-                <div className="mb-6 sm:mb-7 md:mb-8">
-                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-purple-300 mb-3 sm:mb-4 px-2">
+                <div className="rmp-mb-6 sm:rmp-mb-7 md:rmp-mb-8">
+                    <p className="rmp-text-sm sm:rmp-text-base md:rmp-text-lg lg:rmp-text-xl rmp-text-purple-300 rmp-mb-3 sm:rmp-mb-4 rmp-px-2">
                         {subtitle}
                     </p>
                     {expectedCompletion && (
-                        <p className="text-xs sm:text-sm md:text-base text-pink-400 font-medium px-2">
+                        <p className="rmp-text-xs sm:rmp-text-sm md:rmp-text-base rmp-text-pink-400 rmp-font-medium rmp-px-2">
                             Expected completion: {expectedCompletion}
                         </p>
                     )}
                 </div>
 
                 {showSpinner && (
-                    <div className="flex justify-center space-x-4 my-6 sm:my-8">
-                        <div className="rounded-full h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 lg:h-10 lg:w-10 border-b-2 border-yellow-400 border-t-2 border-t-pink-500 animate-spin"></div>
+                    <div className="rmp-flex rmp-justify-center rmp-space-x-4 rmp-my-6 sm:rmp-my-8">
+                        <div className="rmp-rounded-full rmp-h-6 rmp-w-6 sm:rmp-h-7 sm:rmp-w-7 md:rmp-h-8 md:rmp-w-8 lg:rmp-h-10 lg:rmp-w-10 rmp-border-b-2 rmp-border-yellow-400 rmp-border-t-2 rmp-border-t-pink-500 rmp-animate-spin"></div>
                     </div>
                 )}
 
                 {showThankYou && (
-                    <div className="mt-8 sm:mt-10 md:mt-12 text-xs sm:text-sm md:text-base text-green-300 px-2">
+                    <div className="rmp-mt-8 sm:rmp-mt-10 md:rmp-mt-12 rmp-text-xs sm:rmp-text-sm md:rmp-text-base rmp-text-green-300 rmp-px-2">
                         <p>{thankYouMessage}</p>
-                        <p className="mt-1 sm:mt-2">- {brandName}</p>
+                        <p className="rmp-mt-1 sm:rmp-mt-2">- {brandName}</p>
                     </div>
                 )}
             </div>

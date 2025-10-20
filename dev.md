@@ -1,1 +1,1 @@
-"@digicroz/react-maintenance-pages": "file:C:/DigiCrozRepos/npmPackages/react-maintenance-pages",
+"@digicroz/react-maintenance-pages": "file:C:/DigiCrozRepos/npm-packages/react-maintenance-pages",
