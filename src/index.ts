@@ -1,4 +1,4 @@
-import { injectStyles } from "./utils/injectStyles"
+import { injectStyles } from "./utils/injectStyles.js"
 injectStyles()
 
 export { MaintenanceOverlay } from "./components/maintenanceOverlay"
