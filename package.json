@@ -1,6 +1,6 @@
 {
     "name": "@digicroz/react-maintenance-pages",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Reusable and type-safe React maintenance and system pages by DigiCroz.",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
